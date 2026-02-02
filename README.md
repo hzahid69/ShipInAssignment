@@ -42,7 +42,6 @@ playwright-assignment/
 │       └── order-crud.spec.ts
 ├── playwright.config.ts            # Playwright configuration
 ├── package.json                    # Project dependencies
-├── run-tests.js                    # Custom test runner
 ├── env.example                     # Environment variable template
 └── README.md                       # This file (comprehensive documentation)
 ```
@@ -100,7 +99,7 @@ playwright-assignment/
 - Node.js (v16 or higher)
 - npm or yarn
 - PostgreSQL (for DB tests)
-- gRPC server (for gRPC tests)
+- gRPC server (for gRPC tests) or run "Node server/simple-grpc-server.js"
 
 ### Installation
 1. **Clone the repository**
