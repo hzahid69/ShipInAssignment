@@ -46,7 +46,7 @@ export class HomePage extends BasePage {
         await this.waitForPageLoad();
     }
 
-    async clickCategory(categoryName: 'women' | 'men' | 'kids') {
+    async clickCategory(categoryName: 'Women' | 'Men' | 'Kids') {
         const categoryLocator = this.page.locator(`a[href*="#${categoryName}"]`);
         await categoryLocator.click();
         await this.waitForPageLoad();

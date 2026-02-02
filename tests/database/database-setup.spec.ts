@@ -179,13 +179,11 @@ test.describe("Database Setup and Connection", () => {
         "CREATE TEMP TABLE temp_large_dataset (id SERIAL, value INTEGER)"
       );
 
-      const insertPromises = Array.from({ length: 1000 }, (_, i) =>
-        dbConnection.query(
-          "INSERT INTO temp_large_dataset (value) VALUES ($1)",
-          [i]
-        )
-      );
-      await dbConnection.transaction(insertPromises);
+      const insertQueries = Array.from({ length: 1000 }, (_, i) => ({
+        text: "INSERT INTO temp_large_dataset (value) VALUES ($1)",
+        params: [i],
+      }));
+      await dbConnection.transaction(insertQueries);
 
       // Query large dataset
       const startTime = Date.now();

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { blockAds } from '../utils/adblock';
 import { HomePage } from '../pages/HomePage';
 import { ProductsPage } from '../pages/ProductsPage';
 import { ProductDetailPage } from '../pages/ProductDetailPage';
@@ -18,6 +19,8 @@ test.describe('Automation Exercise E2E Tests', () => {
     let signupPage: SignupPage;
 
     test.beforeEach(async ({ page }) => {
+        await blockAds(page);
+        
         homePage = new HomePage(page);
         productsPage = new ProductsPage(page);
         productDetailPage = new ProductDetailPage(page);
@@ -261,9 +264,9 @@ test.describe('Automation Exercise E2E Tests', () => {
             await homePage.navigateToHome();
             
             // Test category navigation
-            await homePage.clickCategory('women');
-            await homePage.clickCategory('men');
-            await homePage.clickCategory('kids');
+            await homePage.clickCategory('Women');
+            await homePage.clickCategory('Men');
+            await homePage.clickCategory('Kids');
             
             // Test scroll functionality
             await homePage.scrollToBottom();

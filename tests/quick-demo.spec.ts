@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { ProductsPage } from '../pages/ProductsPage';
 import { TestData } from '../utils/TestData';
+import { blockAds } from '../utils/adblock';
 
 test.describe('Quick Demo - Basic Functionality', () => {
     let homePage: HomePage;
@@ -10,6 +11,7 @@ test.describe('Quick Demo - Basic Functionality', () => {
     test.beforeEach(async ({ page }) => {
         homePage = new HomePage(page);
         productsPage = new ProductsPage(page);
+        await blockAds(page);
     });
 
     test('Quick Demo - Home Page and Search', async ({ page }) => {
@@ -50,8 +52,8 @@ test.describe('Quick Demo - Basic Functionality', () => {
         await test.step('Test basic navigation', async () => {
             // Test category navigation
             await homePage.navigateToHome();
-            await homePage.clickCategory('women');
-            await homePage.clickCategory('men');
+            await homePage.clickCategory('Women');
+            await homePage.clickCategory('Men');
             
             console.log('✅ Category navigation working');
         });
